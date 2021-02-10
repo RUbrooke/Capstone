@@ -6,13 +6,14 @@ import React from "react";
 import "./App.css";
 import { smartConfig } from "./config";
 import HomePage from "./HomePage";
+import MyInformation from "./MyInformation";
 
 const smartClient = new SMARTClient(smartConfig);
 
 function App() {
     return (
         <CommureSmartApp client={smartClient}>
-           <HomePage/>
+           <MyInformation/>
 
         </CommureSmartApp>
     );

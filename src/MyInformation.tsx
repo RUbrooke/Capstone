@@ -16,54 +16,56 @@ const smartClient = new SMARTClient(smartConfig);
 
 function MyInformation() {
     return (
-    <FhirDataQuery queryString="Practitioner">
-        {({ data, loading }) => {
-        if (loading) {
-            return "Loading...";
-        }
-        if (!data) {
-            return "Error loading data!";
-        }
-        const entries = (data as Bundle).entry!;
-        if (!entries) {
-            return "Data is empty! (Forgot to import?)";
-        }
-        /* Rendering each of the patients below here */
-        const practitioner: Practitioner[] = entries.map(
-            value => value.resource as Practitioner
-        );
+        <FhirDataQuery queryString="Practitioner">
+            {({ data, loading }) => {
+                if (loading) {
+                    return "Loading...";
+                }
+                if (!data) {
+                    return "Error loading data!";
+                }
+                const entries = (data as Bundle).entry!;
+                if (!entries) {
+                    return "Data is empty! (Forgot to import?)";
+                }
+                /* Rendering each of the patients below here */
+                const practitioners: Practitioner[] = entries.map(
+                    value => value.resource as Practitioner
+                );
 
 
-        return (
-            <div>
 
-                {practitioner.map((practitioner, index) => (
+                return (
+                    <div>
 
+                        {
+                            practitioners.map((practitioner, index) => {
+                                console.log(practitioner.name)
+                                // @ts-ignore
+                                var obj = practitioner.name[0]
+                                console.log(obj)
+                                // @ts-ignore
 
-                        <Card interactive={false} elevation={Elevation.ZERO}>
-                    <h5>
-                        <FhirHumanName
-                            value={{
-            use: "official",
-                text: "Alex Gilmour",
-                family: "Gilmour",
-                given: ["Alex"]
-        }}
-        />
+                                return (
+                                    <Card interactive={false} elevation={Elevation.ZERO}>
 
-        </h5>
+                                        <FhirHumanName
+                                            value={{
+                                                text: obj.text
+                                            }}
+                                        />
 
-        <p>Card content</p>
-        <Button intent={Intent.PRIMARY}>Submit</Button>
+                                        <Button intent={Intent.PRIMARY}>Submit</Button>
+                                    </Card>
+                                )
+                            })
+                        }
 
-            </Card>
-    ))}
-
-        </div>
+                    </div>
+                );
+            }}
+        </FhirDataQuery>
     );
-    }}
-    </FhirDataQuery>
-);
 }
 
 export default MyInformation;
