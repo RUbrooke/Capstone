@@ -19,8 +19,20 @@ const flexPanel = content => (
     </div>
 );
 
+const componentPanel = Content => (
+    <div
+        style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+        }}
+    >
+        <Content/>
+    </div>
+);
 const formPanel = flexPanel("📝 Form components here");
-const infoPanel = flexPanel(MyInformation)
+const infoPanel = componentPanel(MyInformation)
 const reportPanel = flexPanel("📈 Report components here");
 
 const stateSwitch = (param) => {

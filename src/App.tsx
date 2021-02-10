@@ -13,7 +13,7 @@ const smartClient = new SMARTClient(smartConfig);
 function App() {
     return (
         <CommureSmartApp client={smartClient}>
-           <MyInformation/>
+           <HomePage/>
 
         </CommureSmartApp>
     );

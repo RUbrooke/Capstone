@@ -8,7 +8,7 @@ import { smartConfig } from "./config";
 import { Card, Elevation, Intent } from "@commure/components-foundation";
 import { Button } from "@commure/components-foundation";
 import "@commure/components-core/lib/style.css"; // Once at the top of your application
-import { FhirHumanName, FhirQuantity } from "@commure/components-core";
+import { FhirHumanName, FhirQuantity, FhirDateTime } from "@commure/components-core";
 
 
 
@@ -40,27 +40,38 @@ function MyInformation() {
 
                         {
                             practitioners.map((practitioner, index) => {
-                                console.log(practitioner.name)
                                 // @ts-ignore
-                                var obj = practitioner.name[0]
-                                console.log(obj)
+                                var name = practitioner.name[0]
                                 // @ts-ignore
+                                var IDandInfo = practitioner.identifier
+                                // @ts-ignore
+                                if (index == 0){
+                                    // @ts-ignore
 
-                                return (
-                                    <Card interactive={false} elevation={Elevation.ZERO}>
+                                    return (
 
-                                        <FhirHumanName
+                                    <div>
+                                    <Card key = {index} interactive={false} elevation={Elevation.ZERO}>
+                                        <FhirHumanName key = {index}
                                             value={{
-                                                text: obj.text
+                                                text: name.text,
+                                                suffix: name.suffix,
+
                                             }}
                                         />
+                                        <FhirDateTime
+                                            value={
+                                                // @ts-ignore
 
-                                        <Button intent={Intent.PRIMARY}>Submit</Button>
+                                                IDandInfo[0].period.start
+                                            }
+                                            />
+
                                     </Card>
-                                )
+                                    </div>
+                                )}
                             })
                         }
-
                     </div>
                 );
             }}
