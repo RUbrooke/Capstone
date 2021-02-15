@@ -4,6 +4,8 @@ import "./App.css";
 import { Icon } from "@commure/components-foundation";
 import { LeftPanelLayout } from "@commure/components-foundation";
 import MyInformation from "./MyInformation";
+import RequestForm from "./RequestForm";
+
 
 
 const flexPanel = content => (
@@ -31,9 +33,9 @@ const componentPanel = Content => (
         <Content/>
     </div>
 );
-const formPanel = flexPanel("📝 Form components here");
+const formPanel = componentPanel(RequestForm)
 const infoPanel = componentPanel(MyInformation)
-const reportPanel = flexPanel("📈 Report components here");
+const reportPanel = flexPanel("📝 FIX ME EVENTUALLY");
 
 const stateSwitch = (param) => {
     switch(param) {

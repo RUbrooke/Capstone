@@ -7,6 +7,7 @@ import "./App.css";
 import { smartConfig } from "./config";
 import HomePage from "./HomePage";
 import MyInformation from "./MyInformation";
+import RequestForm from "./RequestForm";
 
 const smartClient = new SMARTClient(smartConfig);
 
