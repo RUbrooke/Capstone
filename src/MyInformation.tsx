@@ -8,8 +8,7 @@ import { smartConfig } from "./config";
 import { Card, Elevation, Intent } from "@commure/components-foundation";
 import { Button } from "@commure/components-foundation";
 import "@commure/components-core/lib/style.css"; // Once at the top of your application
-import { FhirHumanName, FhirQuantity, FhirDateTime } from "@commure/components-core";
-
+import { FhirHumanName, FhirQuantity, FhirDateTime, FhirString } from "@commure/components-core";
 
 
 const smartClient = new SMARTClient(smartConfig);
@@ -45,13 +44,15 @@ function MyInformation() {
                                 // @ts-ignore
                                 var IDandInfo = practitioner.identifier
                                 // @ts-ignore
-                                if (index == 0){
+                                console.log (practitioners)
+                                if (index ==0){
                                     // @ts-ignore
 
                                     return (
 
                                     <div>
                                     <Card key = {index} interactive={false} elevation={Elevation.ZERO}>
+                                       <b>
                                         <FhirHumanName key = {index}
                                             value={{
                                                 text: name.text,
@@ -59,20 +60,29 @@ function MyInformation() {
 
                                             }}
                                         />
+                                       </b>
+                                        <p>Employee Since:
                                         <FhirDateTime
                                             value={
                                                 // @ts-ignore
-
                                                 IDandInfo[0].period.start
                                             }
                                             />
-
+                                        </p>
+                                        <p>Employee ID:
+                                        <FhirString
+                                            value={
+                                                // @ts-ignore
+                                                IDandInfo[0].value
+                                            }
+                                        />
+                                        </p>
                                     </Card>
                                     </div>
                                 )}
                             })
                         }
-                    </div>
+                    </div> //employee since, id number
                 );
             }}
         </FhirDataQuery>
