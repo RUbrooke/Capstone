@@ -35,7 +35,7 @@ const componentPanel = Content => (
 );
 const formPanel = componentPanel(RequestForm)
 const infoPanel = componentPanel(MyInformation)
-const reportPanel = flexPanel("📝 FIX ME EVENTUALLY");
+const reportPanel = flexPanel("📝 Place schedule here. In a right pannel put co-workers who are on/off/able to cover shift");
 
 const stateSwitch = (param) => {
     switch(param) {
@@ -56,6 +56,14 @@ const HomePage = () => {
 
     return (
         <div>
+            {/* commure */}
+            <AppHeader
+                showFullUserName={false}
+                appName="commure"
+                //logo={<img src={logoSvg} />}
+            />
+
+
             {/* Application header */}
             <AppHeader
                 showFullUserName={false}
