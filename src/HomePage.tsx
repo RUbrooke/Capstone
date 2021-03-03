@@ -5,21 +5,10 @@ import { Icon } from "@commure/components-foundation";
 import { LeftPanelLayout } from "@commure/components-foundation";
 import MyInformation from "./MyInformation";
 import RequestForm from "./RequestForm";
+import Schedule from "./Schedule";
 
 
 
-const flexPanel = content => (
-    <div
-        style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-        }}
-    >
-        {content}
-    </div>
-);
 
 const componentPanel = Content => (
     <div
@@ -35,7 +24,7 @@ const componentPanel = Content => (
 );
 const formPanel = componentPanel(RequestForm)
 const infoPanel = componentPanel(MyInformation)
-const reportPanel = flexPanel("📝 Place schedule here. In a right pannel put co-workers who are on/off/able to cover shift");
+const reportPanel = componentPanel(Schedule)
 
 const stateSwitch = (param) => {
     switch(param) {
