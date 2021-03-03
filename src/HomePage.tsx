@@ -56,12 +56,7 @@ const HomePage = () => {
 
     return (
         <div>
-            {/* commure */}
-            <AppHeader
-                showFullUserName={false}
-                appName="commure"
-                //logo={<img src={logoSvg} />}
-            />
+
 
 
             {/* Application header */}
